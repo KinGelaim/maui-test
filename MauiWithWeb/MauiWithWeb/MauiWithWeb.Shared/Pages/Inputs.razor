@@ -1,0 +1,92 @@
+﻿@page "/web-inputs"
+
+<PageTitle>Web Inputs</PageTitle>
+
+<h3>Web Inputs</h3>
+
+<input type="checkbox" @bind-value="@isChecked" @oninput="CheckboxChanged" />
+
+<p>Current value: @isChecked</p>
+
+<input type="date" @bind-value="@date" @oninput="DateChanged" />
+
+<p>Current date: @date</p>
+
+<input type="number" @bind-value="@number" oninput="NumberChanged" />
+
+<p>Current number: @number</p>
+
+<input type="radio" name="radio-group" checked="@(color == Color.Red)" value="@Color.Red" onchange="@UpdateColor" />
+<label>Red</label>
+<input type="radio" name="radio-group" checked="@(color == Color.Green)" value="@Color.Green" onchange="@UpdateColor" />
+<label>Green</label>
+<input type="radio" name="radio-group" checked="@(color == Color.Blue)" value="@Color.Blue" onchange="@UpdateColor" />
+<label>Blue</label>
+
+<p>Current radio: @color</p>
+
+<select @bind="@value">
+    @foreach (var val in values)
+    {
+        <option value="@val">@val</option>
+    }
+</select>
+
+<p>Current select: @value</p>
+
+<input type="text" @bind-value="@text" />
+<p>Current text: @text</p>
+
+<textarea oninput="@TextAreaChanged">@textArea</textarea>
+<p>Current textarea: @textArea</p>
+
+@code {
+    private bool isChecked { get; set; }
+    private DateTime date { get; set; } = DateTime.Now;
+    private int number { get; set; }
+    private Color color { get; set; } = Color.Green;
+
+    private string value { get; set; } = "Orange";
+    private string[] values { get; set; } = ["Apple", "Orange", "Banana"];
+
+    private string text { get; set; } = string.Empty;
+    private string textArea { get; set; } = string.Empty;
+
+    private void CheckboxChanged(ChangeEventArgs e)
+    {
+        var value = e.Value;
+        Console.WriteLine($"Checkbox changed {isChecked} with value {value}");
+    }
+
+    private void DateChanged(ChangeEventArgs e)
+    {
+        var value = e.Value;
+        Console.WriteLine($"Date changed {date} with value {value}");
+    }
+
+    private void NumberChanged(ChangeEventArgs e)
+    {
+        var value = e.Value;
+        Console.WriteLine($"Number changed {number} with value {value}");
+    }
+
+    private void UpdateColor(ChangeEventArgs e)
+    {
+        var value = Enum.Parse<Color>((string)e.Value);
+        color = value;
+        Console.WriteLine($"Radion changed {color} with value {value}");
+    }
+
+    private void TextAreaChanged(ChangeEventArgs e)
+    {
+        var value = e.Value?.ToString();
+        textArea = value ?? string.Empty;
+    }
+
+    private enum Color
+    {
+        Red,
+        Green,
+        Blue
+    }
+}
