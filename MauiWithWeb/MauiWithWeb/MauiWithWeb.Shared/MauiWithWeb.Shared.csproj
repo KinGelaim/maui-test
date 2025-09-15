@@ -14,4 +14,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.20" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\images\accelerate.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
