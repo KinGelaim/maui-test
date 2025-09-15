@@ -1,0 +1,107 @@
+﻿@page "/form-example"
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>Form Example</PageTitle>
+
+<h3>Form Example</h3>
+
+<EditForm
+    Model="Model"
+    OnValidSubmit="Submit"
+>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label>
+            Identifier:
+            <InputText @bind-Value="Model!.Id" />
+        </label>
+    </div>
+    <div>
+        <label>
+            Description (optional):
+            <InputTextArea @bind-Value="Model!.Description" />
+        </label>
+    </div>
+    <div>
+        <label>
+            Primary Classification:
+            <InputSelect @bind-Value="Model!.Classification">
+                <option value="">
+                    Select classification ...
+                </option>
+                <option checked="@(Model!.Classification == "Low")" value="Low">
+                    Low
+                </option>
+                <option checked="@(Model!.Classification == "Medium")" value="Medium">
+                    Medium
+                </option>
+                <option checked="@(Model!.Classification == "Hight")" value="Hight">
+                    Hight
+                </option>
+            </InputSelect>
+        </label>
+    </div>
+    <div>
+        <label>
+            Maximum Accommodation:
+            <InputNumber @bind-Value="Model!.MaximumAccommodation" />
+        </label>
+    </div>
+    <div>
+        <label>
+            Teacher Approval:
+            <InputCheckbox @bind-Value="Model!.IsTeacherValidated" />
+        </label>
+    </div>
+    <div>
+        <label>
+            Production Date:
+            <InputDate @bind-Value="Model!.ProductionDate" />
+        </label>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</EditForm>
+
+@code {
+    public class Course
+    {
+        [Required]
+        [StringLength(16, ErrorMessage = "Identifier too long (16 character limit).")]
+        public string? Id { get; set; }
+
+        public string? Description { get; set; }
+
+        [Required]
+        public string? Classification { get; set; }
+
+        [Range(1, 100000, ErrorMessage = "Accommodation invalid (1-100000).")]
+        public int MaximumAccommodation { get; set; }
+
+        [Required]
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Approval required.")]
+        public bool IsTeacherValidated { get; set; }
+
+        [Required]
+        public DateTime ProductionDate { get; set; }
+    }
+
+    [SupplyParameterFromForm]
+    private Course? Model { get; set; }
+
+    protected override void OnInitialized() =>
+        Model ??= new() { ProductionDate = DateTime.Now };
+
+    private void Submit()
+    {
+        Console.WriteLine("Id = {Id} Description = {Description} " +
+            "Classification = {Classification} MaximumAccommodation = " +
+            "{MaximumAccommodation} IsTeacherValidated = " +
+            "{IsTeacherValidated} ProductionDate = {ProductionDate}",
+            Model?.Id, Model?.Description, Model?.Classification,
+            Model?.MaximumAccommodation, Model?.IsTeacherValidated,
+            Model?.ProductionDate);
+    }
+}
