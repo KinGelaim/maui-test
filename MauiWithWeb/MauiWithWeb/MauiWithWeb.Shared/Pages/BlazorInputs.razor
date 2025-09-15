@@ -1,0 +1,72 @@
+﻿@page "/blazor-inputs"
+
+<PageTitle>Blazor Inputs</PageTitle>
+
+<h3>Blazor Inputs</h3>
+
+<InputCheckbox @bind-Value="@isChecked"></InputCheckbox>
+
+<p>Current checkbox value: @isChecked</p>
+
+<InputDate TValue="DateTime" @bind-Value="@dateTime"></InputDate>
+
+<p>Current date time: @dateTime</p>
+
+<InputDate TValue="DateOnly" @bind-Value="@date"></InputDate>
+
+<p>Current date: @date</p>
+
+<InputNumber TValue="int" @bind-Value="@number"></InputNumber>
+
+<p>Current int: @number</p>
+
+<InputNumber TValue="double" @bind-Value="@doubleValue"></InputNumber>
+
+<p>Current double: @doubleValue</p>
+
+<InputRadioGroup @bind-Value="@language">
+	Language: <br/>
+	@foreach (var language in languages)
+	{
+		<InputRadio Value="@language" />
+		@language
+	
+		<br />
+	}
+</InputRadioGroup>
+
+<p>Current language: @language</p>
+
+<InputSelect @bind-Value="@selectedLanguages" multiple>
+	@foreach (var lang in languages)
+	{
+		<option value="@lang">@lang</option>
+	}
+</InputSelect>
+
+<p>Current languages: @selectedLang</p>
+
+<InputText @bind-Value="@text" />
+
+<p>Current text: @text</p>
+
+<InputTextArea @bind-Value="@textArea" />
+
+<p>Current text area: @textArea</p>
+
+@code {
+	private bool isChecked { get; set; }
+	private DateTime dateTime { get; set; } = DateTime.Now;
+	private DateOnly date { get; set; } = DateOnly.FromDateTime(DateTime.Now);
+	private int number { get; set; }
+	private double doubleValue { get; set; }
+
+	private string language = string.Empty;
+	private string[] languages = ["C#", "Python", "GO"];
+	private string[] selectedLanguages = [];
+
+	private string selectedLang => string.Join(", ", selectedLanguages);
+
+	private string text = string.Empty;
+	private string textArea = string.Empty;
+}
