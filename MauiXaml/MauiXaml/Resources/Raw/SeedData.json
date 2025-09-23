@@ -1,0 +1,61 @@
+{
+    "Projects": [
+        {
+            "Name": "Работа",
+            "Description": "Улучшите баланс между работой и личной жизнью",
+            "Icon": "\uea28",
+            "Category": { "Title": "Работа", "Color": "#3068df" },
+            "Tags": [
+                { "Title": "Работа", "Color": "#3068df" }
+            ],
+            "Tasks": [
+                { "Title": "Опрос сотрудников", "IsCompleted": false },
+                { "Title": "Анализ опроса сотрудников", "IsCompleted": false },
+                { "Title": "Разработать план действий", "IsCompleted": false }
+            ]
+        },
+        {
+            "Name": "Личное",
+            "Description": "Учитесь говорить на другом языке",
+            "Icon": "\uf8fe",
+            "Category": { "Title": "Образование", "Color": "#8800FF" },
+            "Tags": [
+                { "Title": "Личное", "Color": "#FF4500" }
+            ],
+            "Tasks": [
+                { "Title": "Прочитать книгу", "IsCompleted": false },
+                { "Title": "Посетить конференцию", "IsCompleted": false },
+                { "Title": "Заняться своим хобби", "IsCompleted": false }
+            ]
+        },
+        {
+            "Name": "Спорт",
+            "Description": "Улучшаем здоровье и физическое состояние",
+            "Icon": "\uf837",
+            "Category": { "Title": "Личное", "Color": "#FF3300" },
+            "Tags": [
+                { "Title": "Здоровье", "Color": "#32CD32" }
+            ],
+            "Tasks": [
+                { "Title": "Утренняя пробежка", "IsCompleted": false },
+                { "Title": "Поход в спортзал", "IsCompleted": false },
+                { "Title": "Здоровое питание", "IsCompleted": false }
+            ]
+        },
+        {
+            "Name": "Семья и друзья",
+            "Description": "Укрепляйте отношения с семьей и друзьями",
+            "Icon": "\uf5a9",
+            "Category": { "Title": "Взаимоотношение", "Color": "#FF9900" },
+            "Tags": [
+                { "Title": "Семья", "Color": "#1E90FF" },
+                { "Title": "Друзья", "Color": "#FF69B4" }
+            ],
+            "Tasks": [
+                { "Title": "Семейный поход в магазин", "IsCompleted": false },
+                { "Title": "Встреча с друзьями", "IsCompleted": false },
+                { "Title": "Общение с родителями", "IsCompleted": false }
+            ]
+        }
+    ]
+}
