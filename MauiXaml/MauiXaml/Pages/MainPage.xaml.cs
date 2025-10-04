@@ -1,7 +1,4 @@
-﻿using MauiXaml.Models;
-using MauiXaml.PageModels;
-
-namespace MauiXaml.Pages
+﻿namespace MauiXaml.Pages
 {
     public partial class MainPage : ContentPage
     {

@@ -4,13 +4,14 @@
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
              xmlns:pageModel="clr-namespace:MauiXaml.PageModels"
              xmlns:models="clr-namespace:MauiXaml.Models"
+             xmlns:extensions="clr-namespace:MauiXaml.Extensions"
              x:DataType="pageModel:TaskDetailPageModel"
              x:Class="MauiXaml.Pages.TaskDetailPage"
-             Title="Задача">
+             Title="{extensions:Translate Key=TaskTitle}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            Text="Удалить"
+            Text="{extensions:Translate Key=RemoveBtn}"
             Command="{Binding DeleteCommand}"
             Order="Primary"
             Priority="0"
@@ -21,13 +22,13 @@
     <Grid>
         <ScrollView>
             <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}" Padding="{StaticResource LayoutPadding}">
-                <sf:SfTextInputLayout Hint="Задача">
+                <sf:SfTextInputLayout Hint="{extensions:Translate Key=TaskTitle}">
                     <Entry
                         Text="{Binding Title}"
                         SemanticProperties.Description="Title" />
                 </sf:SfTextInputLayout>
 
-                <sf:SfTextInputLayout Hint="Завершённость">
+                <sf:SfTextInputLayout Hint="{extensions:Translate Key=CompletenessHint}">
                     <CheckBox
                         HorizontalOptions="End"
                         IsChecked="{Binding IsCompleted}"
@@ -49,7 +50,7 @@
 
                 <Button 
                     HeightRequest="{OnIdiom 44, Desktop=60}"
-                    Text="Сохранить"
+                    Text="{extensions:Translate Key=SaveBtn}"
                     Command="{Binding SaveCommand}"/>
             </VerticalStackLayout>
         </ScrollView>

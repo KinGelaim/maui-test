@@ -6,6 +6,7 @@
              xmlns:controls="clr-namespace:MauiXaml.Pages.Controls"
              xmlns:pullToRefresh="clr-namespace:Syncfusion.Maui.Toolkit.PullToRefresh;assembly=Syncfusion.Maui.Toolkit"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:extensions="clr-namespace:MauiXaml.Extensions"
              x:Class="MauiXaml.Pages.MainPage"
              x:DataType="pageModels:MainPageModel"
              x:Name="OverviewPage"
@@ -40,7 +41,7 @@
                 <ScrollView>
                     <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}" Padding="{StaticResource LayoutPadding}">
                         <controls:CategoryChart />
-                        <Label Text="Проекты" Style="{StaticResource Title2}"/>
+                        <Label Text="{extensions:Translate Key=ProjectsTitle}" Style="{StaticResource Title2}"/>
                         <ScrollView Orientation="Horizontal" Margin="-30,0">
                             <HorizontalStackLayout 
                                 Spacing="15" Padding="30,0"
@@ -57,7 +58,7 @@
                             </HorizontalStackLayout>
                         </ScrollView>
                         <Grid HeightRequest="44">
-                            <Label Text="Задачи" Style="{StaticResource Title2}" VerticalOptions="Center"/>
+                            <Label Text="{extensions:Translate Key=TasksTitle}" Style="{StaticResource Title2}" VerticalOptions="Center"/>
                             <ImageButton 
                                 Source="{StaticResource IconClean}"
                                 HorizontalOptions="End"

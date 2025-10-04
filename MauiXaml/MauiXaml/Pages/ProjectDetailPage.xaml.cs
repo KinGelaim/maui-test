@@ -1,5 +1,3 @@
-using MauiXaml.Models;
-
 namespace MauiXaml.Pages
 {
     public partial class ProjectDetailPage : ContentPage

@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MauiXaml.Data.Language;
 using MauiXaml.Models;
 
 namespace MauiXaml.PageModels
@@ -17,6 +18,15 @@ namespace MauiXaml.PageModels
         [ObservableProperty]
         private ObservableCollection<Tag> _tags = [];
 
+        [ObservableProperty]
+        private bool _ruCultureSelected = false;
+
+        [ObservableProperty]
+        private bool _enCultureSelected = false;
+
+        [ObservableProperty]
+        private bool _frCultureSelected = false;
+
         public ManageMetaPageModel(CategoryRepository categoryRepository, TagRepository tagRepository, SeedDataService seedDataService)
         {
             _categoryRepository = categoryRepository;
@@ -28,8 +38,14 @@ namespace MauiXaml.PageModels
         {
             var categoriesList = await _categoryRepository.ListAsync();
             Categories = new ObservableCollection<Category>(categoriesList);
+
             var tagsList = await _tagRepository.ListAsync();
             Tags = new ObservableCollection<Tag>(tagsList);
+
+            var ñurrentCultureInfoName = Preferences.Default.Get(Translator.PreviousCultureInfoName, "ru-RU");
+            RuCultureSelected = ñurrentCultureInfoName == "ru-RU";
+            EnCultureSelected = ñurrentCultureInfoName == "en-US";
+            FrCultureSelected = ñurrentCultureInfoName == "fr-FR";
         }
 
         [RelayCommand]

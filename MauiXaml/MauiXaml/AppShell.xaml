@@ -5,23 +5,24 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
     xmlns:pages="clr-namespace:MauiXaml.Pages"
+    xmlns:extensions="clr-namespace:MauiXaml.Extensions"
     Shell.FlyoutBehavior="Flyout"
-    Title="Пример MAUI с использованием Xaml">
+    Title="{extensions:Translate Key=ApplicationTitle}">
 
     <ShellContent
-        Title="График"
+        Title="{extensions:Translate Key=ChartTitle}"
         Icon="{StaticResource IconDashboard}"
         ContentTemplate="{DataTemplate pages:MainPage}"
         Route="main" />
 
     <ShellContent
-        Title="Проекты"
+        Title="{extensions:Translate Key=ProjectsTitle}"
         Icon="{StaticResource IconProjects}"
         ContentTemplate="{DataTemplate pages:ProjectListPage}"
         Route="projects" />
 
     <ShellContent
-        Title="Управление метаданными"
+        Title="{extensions:Translate Key=MetadataManagementTitle}"
         Icon="{StaticResource IconMeta}"
         ContentTemplate="{DataTemplate pages:ManageMetaPage}"
         Route="manage" />

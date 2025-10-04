@@ -11,7 +11,11 @@ namespace MauiXaml
             InitializeComponent();
             var currentTheme = Application.Current!.RequestedTheme;
             ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
+
+            // Явное определение культуры для UI
+            //CultureInfo.CurrentUICulture = new CultureInfo("ru-RU");
         }
+
         public static async Task DisplaySnackbarAsync(string message)
         {
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
