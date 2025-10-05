@@ -38,7 +38,7 @@
 
                 <sf:SfTextInputLayout 
                     IsVisible="{Binding IsExistingProject}" 
-                    Hint="Проект">
+                    Hint="{extensions:Translate Key=ProjectTitle}">
                     <Picker 
                         ItemsSource="{Binding Projects}"
                         ItemDisplayBinding="{Binding Name, x:DataType=models:Project}"

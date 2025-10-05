@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.kin.appka" android:versionCode="3">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.kin.appka" android:versionCode="4">
 	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:supportsRtl="true" android:label="AppKa"></application>
 </manifest>
