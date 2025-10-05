@@ -59,7 +59,8 @@ namespace MauiXaml.PageModels
                 await _categoryRepository.SaveItemAsync(category);
             }
 
-            await AppShell.DisplayToastAsync("Сохранены категории");
+            var message = Translator.Instance["CategoriesSavedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
 
         [RelayCommand]
@@ -67,7 +68,9 @@ namespace MauiXaml.PageModels
         {
             Categories.Remove(category);
             await _categoryRepository.DeleteItemAsync(category);
-            await AppShell.DisplayToastAsync("Удалена категория");
+
+            var message = Translator.Instance["CategoryDeletedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
 
         [RelayCommand]
@@ -76,7 +79,9 @@ namespace MauiXaml.PageModels
             var category = new Category();
             Categories.Add(category);
             await _categoryRepository.SaveItemAsync(category);
-            await AppShell.DisplayToastAsync("Добавлена категория");
+
+            var message = Translator.Instance["CategoryAddedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
 
         [RelayCommand]
@@ -87,7 +92,8 @@ namespace MauiXaml.PageModels
                 await _tagRepository.SaveItemAsync(tag);
             }
 
-            await AppShell.DisplayToastAsync("Сохранены тэги");
+            var message = Translator.Instance["TagsAddedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
 
         [RelayCommand]
@@ -95,7 +101,9 @@ namespace MauiXaml.PageModels
         {
             Tags.Remove(tag);
             await _tagRepository.DeleteItemAsync(tag);
-            await AppShell.DisplayToastAsync("Удалён тэг");
+
+            var message = Translator.Instance["TagDeletedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
 
         [RelayCommand]
@@ -104,7 +112,9 @@ namespace MauiXaml.PageModels
             var tag = new Tag();
             Tags.Add(tag);
             await _tagRepository.SaveItemAsync(tag);
-            await AppShell.DisplayToastAsync("Добавлен тэг");
+
+            var message = Translator.Instance["TagAddedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
 
         [RelayCommand]

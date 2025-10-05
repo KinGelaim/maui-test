@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MauiXaml.Data.Language;
 using MauiXaml.Models;
 
 namespace MauiXaml.PageModels
@@ -146,7 +147,10 @@ namespace MauiXaml.PageModels
             await Shell.Current.GoToAsync("..?refresh=true");
 
             if (_task.ID > 0)
-                await AppShell.DisplayToastAsync("Задача сохранена");
+            {
+                var message = Translator.Instance["TaskSavedMessage"] ?? string.Empty;
+                await AppShell.DisplayToastAsync(message);
+            }    
         }
 
         [RelayCommand(CanExecute = nameof(CanDelete))]
@@ -165,7 +169,9 @@ namespace MauiXaml.PageModels
                 await _taskRepository.DeleteItemAsync(_task);
 
             await Shell.Current.GoToAsync("..?refresh=true");
-            await AppShell.DisplayToastAsync("Задача удалена");
+
+            var message = Translator.Instance["TaskDeletedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
     }
 }

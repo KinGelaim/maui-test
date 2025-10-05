@@ -183,4 +183,37 @@
   <data name="CategoriesAndTagsTitle" xml:space="preserve">
     <value>Catégories et Tags</value>
   </data>
+  <data name="EverythingIsClearedMessage" xml:space="preserve">
+    <value>Tout nettoyé!</value>
+  </data>
+  <data name="TagAddedMessage" xml:space="preserve">
+    <value>Tag Ajouté</value>
+  </data>
+  <data name="TagsAddedMessage" xml:space="preserve">
+    <value>Tags ajoutés</value>
+  </data>
+  <data name="TagDeletedMessage" xml:space="preserve">
+    <value>Tag supprimé</value>
+  </data>
+  <data name="CategoriesSavedMessage" xml:space="preserve">
+    <value>Catégories enregistrées</value>
+  </data>
+  <data name="CategoryDeletedMessage" xml:space="preserve">
+    <value>Catégorie supprimée</value>
+  </data>
+  <data name="CategoryAddedMessage" xml:space="preserve">
+    <value>Catégorie ajoutée</value>
+  </data>
+  <data name="TaskSavedMessage" xml:space="preserve">
+    <value>Tâche enregistrée</value>
+  </data>
+  <data name="TaskDeletedMessage" xml:space="preserve">
+    <value>Tâche supprimée</value>
+  </data>
+  <data name="ProjectSavedMessage" xml:space="preserve">
+    <value>Projet retenu</value>
+  </data>
+  <data name="ProjectDeletedMessage" xml:space="preserve">
+    <value>Projet supprimé</value>
+  </data>
 </root>

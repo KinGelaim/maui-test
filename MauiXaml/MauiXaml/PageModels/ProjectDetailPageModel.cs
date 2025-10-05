@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MauiXaml.Data.Language;
 using MauiXaml.Models;
 
 namespace MauiXaml.PageModels
@@ -204,7 +205,9 @@ namespace MauiXaml.PageModels
             }
 
             await Shell.Current.GoToAsync("..");
-            await AppShell.DisplayToastAsync("Проект сохранён");
+
+            var message = Translator.Instance["ProjectSavedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
 
         [RelayCommand]
@@ -235,7 +238,9 @@ namespace MauiXaml.PageModels
 
             await _projectRepository.DeleteItemAsync(_project);
             await Shell.Current.GoToAsync("..");
-            await AppShell.DisplayToastAsync("Проект удалён");
+
+            var message = Translator.Instance["ProjectDeletedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
 
         [RelayCommand]
@@ -274,7 +279,9 @@ namespace MauiXaml.PageModels
 
             Tasks = new(Tasks);
             OnPropertyChanged(nameof(HasCompletedTasks));
-            await AppShell.DisplayToastAsync("Всё очищено!");
+
+            var message = Translator.Instance["EverythingIsClearedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
     }
 }

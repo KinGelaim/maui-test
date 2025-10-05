@@ -88,11 +88,38 @@ namespace MauiXaml.Resources.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Категории сохранены.
+        /// </summary>
+        internal static string CategoriesSavedMessage {
+            get {
+                return ResourceManager.GetString("CategoriesSavedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Категории.
         /// </summary>
         internal static string CategoriesTitle {
             get {
                 return ResourceManager.GetString("CategoriesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Категория удалена.
+        /// </summary>
+        internal static string CategoryAddedMessage {
+            get {
+                return ResourceManager.GetString("CategoryAddedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Категория удалена.
+        /// </summary>
+        internal static string CategoryDeletedMessage {
+            get {
+                return ResourceManager.GetString("CategoryDeletedMessage", resourceCulture);
             }
         }
         
@@ -142,6 +169,15 @@ namespace MauiXaml.Resources.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Всё очищено!.
+        /// </summary>
+        internal static string EverythingIsClearedMessage {
+            get {
+                return ResourceManager.GetString("EverythingIsClearedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Французский.
         /// </summary>
         internal static string FrLanguage {
@@ -183,6 +219,24 @@ namespace MauiXaml.Resources.Strings {
         internal static string NameHint {
             get {
                 return ResourceManager.GetString("NameHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Проект удалён.
+        /// </summary>
+        internal static string ProjectDeletedMessage {
+            get {
+                return ResourceManager.GetString("ProjectDeletedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Проект сохранён.
+        /// </summary>
+        internal static string ProjectSavedMessage {
+            get {
+                return ResourceManager.GetString("ProjectSavedMessage", resourceCulture);
             }
         }
         
@@ -232,11 +286,56 @@ namespace MauiXaml.Resources.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Тэг добавлен.
+        /// </summary>
+        internal static string TagAddedMessage {
+            get {
+                return ResourceManager.GetString("TagAddedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тэг удалён.
+        /// </summary>
+        internal static string TagDeletedMessage {
+            get {
+                return ResourceManager.GetString("TagDeletedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тэги сохранены.
+        /// </summary>
+        internal static string TagsAddedMessage {
+            get {
+                return ResourceManager.GetString("TagsAddedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Тэги.
         /// </summary>
         internal static string TagsTitle {
             get {
                 return ResourceManager.GetString("TagsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Задача удалена.
+        /// </summary>
+        internal static string TaskDeletedMessage {
+            get {
+                return ResourceManager.GetString("TaskDeletedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Задача сохранена.
+        /// </summary>
+        internal static string TaskSavedMessage {
+            get {
+                return ResourceManager.GetString("TaskSavedMessage", resourceCulture);
             }
         }
         

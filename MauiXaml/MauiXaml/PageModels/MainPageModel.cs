@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MauiXaml.Data.Language;
 using MauiXaml.Models;
 
 namespace MauiXaml.PageModels
@@ -168,7 +169,9 @@ namespace MauiXaml.PageModels
 
             OnPropertyChanged(nameof(HasCompletedTasks));
             Tasks = new(Tasks);
-            await AppShell.DisplayToastAsync("Всё очищено!");
+
+            var message = Translator.Instance["EverythingIsClearedMessage"] ?? string.Empty;
+            await AppShell.DisplayToastAsync(message);
         }
     }
 }

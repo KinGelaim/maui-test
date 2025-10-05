@@ -183,4 +183,37 @@
   <data name="CategoriesAndTagsTitle" xml:space="preserve">
     <value>Категории и тэги</value>
   </data>
+  <data name="EverythingIsClearedMessage" xml:space="preserve">
+    <value>Всё очищено!</value>
+  </data>
+  <data name="TagAddedMessage" xml:space="preserve">
+    <value>Тэг добавлен</value>
+  </data>
+  <data name="TagsAddedMessage" xml:space="preserve">
+    <value>Тэги сохранены</value>
+  </data>
+  <data name="TagDeletedMessage" xml:space="preserve">
+    <value>Тэг удалён</value>
+  </data>
+  <data name="CategoriesSavedMessage" xml:space="preserve">
+    <value>Категории сохранены</value>
+  </data>
+  <data name="CategoryDeletedMessage" xml:space="preserve">
+    <value>Категория удалена</value>
+  </data>
+  <data name="CategoryAddedMessage" xml:space="preserve">
+    <value>Категория удалена</value>
+  </data>
+  <data name="TaskSavedMessage" xml:space="preserve">
+    <value>Задача сохранена</value>
+  </data>
+  <data name="TaskDeletedMessage" xml:space="preserve">
+    <value>Задача удалена</value>
+  </data>
+  <data name="ProjectSavedMessage" xml:space="preserve">
+    <value>Проект сохранён</value>
+  </data>
+  <data name="ProjectDeletedMessage" xml:space="preserve">
+    <value>Проект удалён</value>
+  </data>
 </root>
