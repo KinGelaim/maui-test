@@ -16,14 +16,8 @@ public partial class ManageMetaPage : ContentPage
         var radio = (RadioButton)sender;
         if (radio.IsChecked)
         {
-            var lang = radio.Value;
-            var newCulterInfo = lang switch
-            {
-                "Ru" => new CultureInfo("ru-RU"),
-                "En" => new CultureInfo("en-US"),
-                "Fr" => new CultureInfo("fr-FR"),
-                _ => CultureInfo.InvariantCulture
-            };
+            var lang = radio.Value.ToString();
+            var newCulterInfo = new CultureInfo(lang);
             Translator.Instance.SetCultureInfo(newCulterInfo);
         }
     }

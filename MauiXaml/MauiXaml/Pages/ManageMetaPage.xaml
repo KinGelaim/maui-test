@@ -132,11 +132,11 @@
             </Grid>
 
             <Label Text="{extensions:Translate Key=LanguageTitle}" Style="{StaticResource Title2}" />
-            <HorizontalStackLayout RadioButtonGroup.GroupName="LanguageButtons">
-                <RadioButton Content="{extensions:Translate Key=RuLanguage}" x:Name="RussiaLang" CheckedChanged="LangChanged" Value="Ru" IsChecked="{Binding RuCultureSelected}" />
-                <RadioButton Content="{extensions:Translate Key=EnLanguage}" x:Name="EnglishLang" CheckedChanged="LangChanged" Value="En" IsChecked="{Binding EnCultureSelected}" />
-                <RadioButton Content="{extensions:Translate Key=FrLanguage}" x:Name="FrenchLang" CheckedChanged="LangChanged" Value="Fr" IsChecked="{Binding FrCultureSelected}" />
-            </HorizontalStackLayout>
+            <VerticalStackLayout RadioButtonGroup.GroupName="LanguageButtons">
+                <RadioButton Content="{extensions:Translate Key=RuLanguage}" x:Name="RussiaLang" CheckedChanged="LangChanged" Value="ru-RU" IsChecked="{Binding RuCultureSelected}" />
+                <RadioButton Content="{extensions:Translate Key=EnLanguage}" x:Name="EnglishLang" CheckedChanged="LangChanged" Value="en-US" IsChecked="{Binding EnCultureSelected}" />
+                <RadioButton Content="{extensions:Translate Key=FrLanguage}" x:Name="FrenchLang" CheckedChanged="LangChanged" Value="fr-FR" IsChecked="{Binding FrCultureSelected}" />
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
