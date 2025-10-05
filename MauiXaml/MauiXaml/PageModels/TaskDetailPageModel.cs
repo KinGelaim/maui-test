@@ -61,7 +61,7 @@ namespace MauiXaml.PageModels
 
                 if (_task is null)
                 {
-                    _errorHandler.HandleError(new Exception($"Задача с идентификатором {taskId} не валидна"));
+                    _errorHandler.HandleError(new Exception($"Р—Р°РґР°С‡Р° СЃ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРј {taskId} РЅРµ РІР°Р»РёРґРЅР°"));
                     return;
                 }
 
@@ -72,7 +72,7 @@ namespace MauiXaml.PageModels
                 _task = new ProjectTask();
             }
 
-            // Если проект новый, нам не нужно загружать выпадающий список проекта
+            // Р•СЃР»Рё РїСЂРѕРµРєС‚ РЅРѕРІС‹Р№, РЅР°Рј РЅРµ РЅСѓР¶РЅРѕ Р·Р°РіСЂСѓР¶Р°С‚СЊ РІС‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє РїСЂРѕРµРєС‚Р°
             if (Project?.ID == 0)
             {
                 IsExistingProject = false;
@@ -92,7 +92,7 @@ namespace MauiXaml.PageModels
             {
                 if (_task is null)
                 {
-                    _errorHandler.HandleError(new Exception($"Задача с идентификатором {taskId} не может быть найдена"));
+                    _errorHandler.HandleError(new Exception($"Р—Р°РґР°С‡Р° СЃ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРј {taskId} РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РЅР°Р№РґРµРЅР°"));
                     return;
                 }
 
@@ -124,7 +124,7 @@ namespace MauiXaml.PageModels
         {
             if (_task is null)
             {
-                _errorHandler.HandleError(new Exception("Задача не может быть сохранена"));
+                _errorHandler.HandleError(new Exception("Р—Р°РґР°С‡Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЃРѕС…СЂР°РЅРµРЅР°"));
                 return;
             }
 
@@ -146,7 +146,7 @@ namespace MauiXaml.PageModels
             await Shell.Current.GoToAsync("..?refresh=true");
 
             if (_task.ID > 0)
-                await AppShell.DisplayToastAsync("Задача сохранена");
+                await AppShell.DisplayToastAsync("Р—Р°РґР°С‡Р° СЃРѕС…СЂР°РЅРµРЅР°");
         }
 
         [RelayCommand(CanExecute = nameof(CanDelete))]
@@ -154,7 +154,7 @@ namespace MauiXaml.PageModels
         {
             if (_task is null || Project is null)
             {
-                _errorHandler.HandleError(new Exception("Задача не может быть удалена"));
+                _errorHandler.HandleError(new Exception("Р—Р°РґР°С‡Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СѓРґР°Р»РµРЅР°"));
                 return;
             }
 
@@ -165,7 +165,7 @@ namespace MauiXaml.PageModels
                 await _taskRepository.DeleteItemAsync(_task);
 
             await Shell.Current.GoToAsync("..?refresh=true");
-            await AppShell.DisplayToastAsync("Задача удалена");
+            await AppShell.DisplayToastAsync("Р—Р°РґР°С‡Р° СѓРґР°Р»РµРЅР°");
         }
     }
 }

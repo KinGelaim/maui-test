@@ -128,7 +128,7 @@ namespace MauiXaml.PageModels
 
                 if (_project.IsNullOrNew())
                 {
-                    _errorHandler.HandleError(new Exception($"Проект с идентификатором {id} не найден"));
+                    _errorHandler.HandleError(new Exception($"РџСЂРѕРµРєС‚ СЃ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРј {id} РЅРµ РЅР°Р№РґРµРЅ"));
                     return;
                 }
 
@@ -173,7 +173,7 @@ namespace MauiXaml.PageModels
         {
             if (_project is null)
             {
-                _errorHandler.HandleError(new Exception("Проект не может быть сохранён"));
+                _errorHandler.HandleError(new Exception("РџСЂРѕРµРєС‚ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЃРѕС…СЂР°РЅС‘РЅ"));
                 return;
             }
 
@@ -204,7 +204,7 @@ namespace MauiXaml.PageModels
             }
 
             await Shell.Current.GoToAsync("..");
-            await AppShell.DisplayToastAsync("Проект сохранён");
+            await AppShell.DisplayToastAsync("РџСЂРѕРµРєС‚ СЃРѕС…СЂР°РЅС‘РЅ");
         }
 
         [RelayCommand]
@@ -212,12 +212,12 @@ namespace MauiXaml.PageModels
         {
             if (_project is null)
             {
-                _errorHandler.HandleError(new Exception("Нельзя создать задачу, т.к. не найден проект"));
+                _errorHandler.HandleError(new Exception("РќРµР»СЊР·СЏ СЃРѕР·РґР°С‚СЊ Р·Р°РґР°С‡Сѓ, С‚.Рє. РЅРµ РЅР°Р№РґРµРЅ РїСЂРѕРµРєС‚"));
                 return;
             }
 
-            // Передаём проект, чтобы, если это новый проект
-            // можно было просто добавить задачи в проект, а затем сохранить их все отсюда
+            // РџРµСЂРµРґР°С‘Рј РїСЂРѕРµРєС‚, С‡С‚РѕР±С‹, РµСЃР»Рё СЌС‚Рѕ РЅРѕРІС‹Р№ РїСЂРѕРµРєС‚
+            // РјРѕР¶РЅРѕ Р±С‹Р»Рѕ РїСЂРѕСЃС‚Рѕ РґРѕР±Р°РІРёС‚СЊ Р·Р°РґР°С‡Рё РІ РїСЂРѕРµРєС‚, Р° Р·Р°С‚РµРј СЃРѕС…СЂР°РЅРёС‚СЊ РёС… РІСЃРµ РѕС‚СЃСЋРґР°
             await Shell.Current.GoToAsync($"task",
                 new ShellNavigationQueryParameters(){
                     {TaskDetailPageModel.ProjectQueryKey, _project}
@@ -235,7 +235,7 @@ namespace MauiXaml.PageModels
 
             await _projectRepository.DeleteItemAsync(_project);
             await Shell.Current.GoToAsync("..");
-            await AppShell.DisplayToastAsync("Проект удалён");
+            await AppShell.DisplayToastAsync("РџСЂРѕРµРєС‚ СѓРґР°Р»С‘РЅ");
         }
 
         [RelayCommand]
@@ -274,7 +274,7 @@ namespace MauiXaml.PageModels
 
             Tasks = new(Tasks);
             OnPropertyChanged(nameof(HasCompletedTasks));
-            await AppShell.DisplayToastAsync("Всё очищено!");
+            await AppShell.DisplayToastAsync("Р’СЃС‘ РѕС‡РёС‰РµРЅРѕ!");
         }
     }
 }

@@ -130,7 +130,7 @@ namespace MauiXaml.PageModels
                 _dataLoaded = true;
                 await Refresh();
             }
-            // Это означает, что мы переходим к
+            // Р­С‚Рѕ РѕР·РЅР°С‡Р°РµС‚, С‡С‚Рѕ РјС‹ РїРµСЂРµС…РѕРґРёРј Рє
             else if (!_isNavigatedTo)
             {
                 await Refresh();
@@ -168,7 +168,7 @@ namespace MauiXaml.PageModels
 
             OnPropertyChanged(nameof(HasCompletedTasks));
             Tasks = new(Tasks);
-            await AppShell.DisplayToastAsync("Всё очищено!");
+            await AppShell.DisplayToastAsync("Р’СЃС‘ РѕС‡РёС‰РµРЅРѕ!");
         }
     }
 }

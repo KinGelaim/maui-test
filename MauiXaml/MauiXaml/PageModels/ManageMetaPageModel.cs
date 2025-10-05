@@ -42,10 +42,10 @@ namespace MauiXaml.PageModels
             var tagsList = await _tagRepository.ListAsync();
             Tags = new ObservableCollection<Tag>(tagsList);
 
-            var сurrentCultureInfoName = Preferences.Default.Get(Translator.PreviousCultureInfoName, "ru-RU");
-            RuCultureSelected = сurrentCultureInfoName == "ru-RU";
-            EnCultureSelected = сurrentCultureInfoName == "en-US";
-            FrCultureSelected = сurrentCultureInfoName == "fr-FR";
+            var currentCultureInfoName = Preferences.Default.Get(Translator.PreviousCultureInfoName, "ru-RU");
+            RuCultureSelected = currentCultureInfoName == "ru-RU";
+            EnCultureSelected = currentCultureInfoName == "en-US";
+            FrCultureSelected = currentCultureInfoName == "fr-FR";
         }
 
         [RelayCommand]
@@ -59,7 +59,7 @@ namespace MauiXaml.PageModels
                 await _categoryRepository.SaveItemAsync(category);
             }
 
-            await AppShell.DisplayToastAsync("Категории сохранены");
+            await AppShell.DisplayToastAsync("РЎРѕС…СЂР°РЅРµРЅС‹ РєР°С‚РµРіРѕСЂРёРё");
         }
 
         [RelayCommand]
@@ -67,7 +67,7 @@ namespace MauiXaml.PageModels
         {
             Categories.Remove(category);
             await _categoryRepository.DeleteItemAsync(category);
-            await AppShell.DisplayToastAsync("Категория удалена");
+            await AppShell.DisplayToastAsync("РЈРґР°Р»РµРЅР° РєР°С‚РµРіРѕСЂРёСЏ");
         }
 
         [RelayCommand]
@@ -76,7 +76,7 @@ namespace MauiXaml.PageModels
             var category = new Category();
             Categories.Add(category);
             await _categoryRepository.SaveItemAsync(category);
-            await AppShell.DisplayToastAsync("Категория добавлена");
+            await AppShell.DisplayToastAsync("Р”РѕР±Р°РІР»РµРЅР° РєР°С‚РµРіРѕСЂРёСЏ");
         }
 
         [RelayCommand]
@@ -87,7 +87,7 @@ namespace MauiXaml.PageModels
                 await _tagRepository.SaveItemAsync(tag);
             }
 
-            await AppShell.DisplayToastAsync("Тэги сохранены");
+            await AppShell.DisplayToastAsync("РЎРѕС…СЂР°РЅРµРЅС‹ С‚СЌРіРё");
         }
 
         [RelayCommand]
@@ -95,7 +95,7 @@ namespace MauiXaml.PageModels
         {
             Tags.Remove(tag);
             await _tagRepository.DeleteItemAsync(tag);
-            await AppShell.DisplayToastAsync("Тэг удалён");
+            await AppShell.DisplayToastAsync("РЈРґР°Р»С‘РЅ С‚СЌРі");
         }
 
         [RelayCommand]
@@ -104,7 +104,7 @@ namespace MauiXaml.PageModels
             var tag = new Tag();
             Tags.Add(tag);
             await _tagRepository.SaveItemAsync(tag);
-            await AppShell.DisplayToastAsync("Тэг добавлен");
+            await AppShell.DisplayToastAsync("Р”РѕР±Р°РІР»РµРЅ С‚СЌРі");
         }
 
         [RelayCommand]
