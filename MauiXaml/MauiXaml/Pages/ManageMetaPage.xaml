@@ -42,6 +42,44 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
+
+        <ControlTemplate x:Key="RadioButtonTemplate">
+            <Border StrokeThickness="2"
+                    StrokeShape="RoundRectangle 8"
+                    HeightRequest="70"
+                    WidthRequest="120"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    Background="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter Property="Stroke"
+                                            Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
+                                            Value="Transparent" />
+                                    <Setter Property="Stroke"
+                                            Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="ControlTemplate" Value="{StaticResource RadioButtonTemplate}" />
+        </Style>
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
@@ -133,10 +171,29 @@
 
             <Label Text="{extensions:Translate Key=LanguageTitle}" Style="{StaticResource Title2}" />
             <VerticalStackLayout RadioButtonGroup.GroupName="LanguageButtons">
+                <RadioButton CheckedChanged="LangChanged" Value="ru-RU" IsChecked="{Binding RuCultureSelected}">
+                    <RadioButton.Content>
+                        <Image Source="ru_flag.png" WidthRequest="25" HeightRequest="25" />
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton CheckedChanged="LangChanged" Value="en-US" IsChecked="{Binding EnCultureSelected}">
+                    <RadioButton.Content>
+                        <Image Source="en_flag.png" WidthRequest="25" HeightRequest="25" />
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton CheckedChanged="LangChanged" Value="fr-FR" IsChecked="{Binding FrCultureSelected}">
+                    <RadioButton.Content>
+                        <Image Source="fr_flag.png" WidthRequest="25" HeightRequest="25" />
+                    </RadioButton.Content>
+                </RadioButton>
+            </VerticalStackLayout>
+
+            <!-- Extensions don't work when you're building a Release :( (Looks like https://github.com/dotnet/maui/issues/7881) -->
+            <!--<VerticalStackLayout RadioButtonGroup.GroupName="LanguageButtons">
                 <RadioButton Content="{extensions:Translate Key=RuLanguage}" x:Name="RussiaLang" CheckedChanged="LangChanged" Value="ru-RU" IsChecked="{Binding RuCultureSelected}" />
                 <RadioButton Content="{extensions:Translate Key=EnLanguage}" x:Name="EnglishLang" CheckedChanged="LangChanged" Value="en-US" IsChecked="{Binding EnCultureSelected}" />
                 <RadioButton Content="{extensions:Translate Key=FrLanguage}" x:Name="FrenchLang" CheckedChanged="LangChanged" Value="fr-FR" IsChecked="{Binding FrCultureSelected}" />
-            </VerticalStackLayout>
+            </VerticalStackLayout>-->
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
