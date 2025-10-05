@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿#if ANDROID
+using MauiLocalNotification.Services;
+#endif
+using Microsoft.Extensions.Logging;
 
 namespace MauiLocalNotification;
 
@@ -18,6 +21,11 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+
+#if ANDROID
+        builder.Services.AddSingleton<INotificationManagerService, Platforms.Android.Services.NotificationManagerService>();
+#endif
+        builder.Services.AddSingleton<MainPage>();
 
         return builder.Build();
     }

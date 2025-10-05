@@ -5,13 +5,15 @@
 
     <ScrollView>
         <VerticalStackLayout
+            x:Name="verticalStackLayout"
             Padding="30,0"
-            Spacing="25">
+            Spacing="25"
+        >
             <Image
                 Source="notification.png"
                 HeightRequest="185"
                 Aspect="AspectFit"
-                SemanticProperties.Description="Notification Image" />
+                SemanticProperties.Description="Изображение уведомления"/>
 
             <Label
                 Text="Hello, Notification!"
@@ -19,17 +21,36 @@
                 SemanticProperties.HeadingLevel="Level1" />
 
             <Label
-                Text="Welcome to the local notifications app!"
+                Text="Добро пожаловать в приложение локальных уведомлений!"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to the local notifications app!" />
+                SemanticProperties.Description="Добро пожаловать в приложение локальных уведомлений!" />
 
             <Button
                 x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
+                Text="Кликни меня" 
+                SemanticProperties.Hint="Считает кол-во кликов по кнопке"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
+
+            <Label
+                Text="Нажмите на кнопку ниже, чтобы создать МГНОВЕННОЕ локальное уведомление"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" />
+            <Button
+                Text="Создать МГНОВЕННОЕ уведомление"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                Clicked="OnSendClick" />
+            <Label
+                Text="Нажмите на кнопку ниже, чтобы запланировать локальное уведомление на 10-секундный срок"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" />
+            <Button
+                Text="Создать ЗАПЛАНИРОВАННОЕ уведомление"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                Clicked="OnScheduleClick" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
