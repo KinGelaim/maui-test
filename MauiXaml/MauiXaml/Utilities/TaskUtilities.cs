@@ -1,25 +1,24 @@
-namespace MauiXaml.Utilities
+namespace MauiXaml.Utilities;
+
+/// <summary>
+/// Утилиты для задач
+/// </summary>
+public static class TaskUtilities
 {
     /// <summary>
-    /// Утилиты для задач
+    /// Запустите и забудьте о безопасной асинхронности
     /// </summary>
-    public static class TaskUtilities
+    /// <param name="task">Задача для запуска и забывания</param>
+    /// <param name="handler">Обработчик ошибки</param>
+    public static async void FireAndForgetSafeAsync(this Task task, IErrorHandler? handler = null)
     {
-        /// <summary>
-        /// Запустите и забудьте о безопасной асинхронности
-        /// </summary>
-        /// <param name="task">Задача для запуска и забывания</param>
-        /// <param name="handler">Обработчик ошибки</param>
-        public static async void FireAndForgetSafeAsync(this Task task, IErrorHandler? handler = null)
+        try
         {
-            try
-            {
-                await task;
-            }
-            catch (Exception ex)
-            {
-                handler?.HandleError(ex);
-            }
+            await task;
+        }
+        catch (Exception ex)
+        {
+            handler?.HandleError(ex);
         }
     }
 }

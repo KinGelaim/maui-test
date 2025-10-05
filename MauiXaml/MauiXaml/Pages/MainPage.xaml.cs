@@ -1,11 +1,10 @@
-﻿namespace MauiXaml.Pages
+﻿namespace MauiXaml.Pages;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage(MainPageModel model)
     {
-        public MainPage(MainPageModel model)
-        {
-            InitializeComponent();
-            BindingContext = model;
-        }
+        InitializeComponent();
+        BindingContext = model;
     }
 }

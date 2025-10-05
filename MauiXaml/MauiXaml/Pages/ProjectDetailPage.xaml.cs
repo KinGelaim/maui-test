@@ -1,12 +1,10 @@
-namespace MauiXaml.Pages
-{
-    public partial class ProjectDetailPage : ContentPage
-    {
-        public ProjectDetailPage(ProjectDetailPageModel model)
-        {
-            InitializeComponent();
+namespace MauiXaml.Pages;
 
-            BindingContext = model;
-        }
+public partial class ProjectDetailPage : ContentPage
+{
+    public ProjectDetailPage(ProjectDetailPageModel model)
+    {
+        InitializeComponent();
+        BindingContext = model;
     }
 }

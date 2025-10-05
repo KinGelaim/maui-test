@@ -6,6 +6,4 @@ using MauiXaml.Models;
 [JsonSerializable(typeof(ProjectsJson))]
 [JsonSerializable(typeof(Category))]
 [JsonSerializable(typeof(Tag))]
-public partial class JsonContext : JsonSerializerContext
-{
-}
+public partial class JsonContext : JsonSerializerContext;

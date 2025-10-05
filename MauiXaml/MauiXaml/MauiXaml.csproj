@@ -90,14 +90,17 @@
 	  <EmbeddedResource Update="Resources\Strings\AppResources.fr-FR.resx">
 	    <LastGenOutput>AppResources.fr-Fr.Designer.cs</LastGenOutput>
 	    <Generator>ResXFileCodeGenerator</Generator>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Resources\Strings\AppResources.en-US.resx">
 	    <LastGenOutput>AppResources.en-US.Designer.cs</LastGenOutput>
 	    <Generator>ResXFileCodeGenerator</Generator>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Resources\Strings\AppResources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	</ItemGroup>
 	

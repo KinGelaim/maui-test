@@ -2,109 +2,108 @@ using System.Text.Json;
 using MauiXaml.Models;
 using Microsoft.Extensions.Logging;
 
-namespace MauiXaml.Data
-{
-    /// <summary>
-    /// Сервис для заполнения БД начальными данными
-    /// </summary>
-    public class SeedDataService
-    {
-        private readonly ProjectRepository _projectRepository;
-        private readonly TaskRepository _taskRepository;
-        private readonly TagRepository _tagRepository;
-        private readonly CategoryRepository _categoryRepository;
-        private readonly string _seedDataFilePath = "SeedData.json";
-        private readonly ILogger<SeedDataService> _logger;
+namespace MauiXaml.Data;
 
-        public SeedDataService(
-            ProjectRepository projectRepository,
-            TaskRepository taskRepository,
-            TagRepository tagRepository,
-            CategoryRepository categoryRepository,
-            ILogger<SeedDataService> logger)
+/// <summary>
+/// Сервис для заполнения БД начальными данными
+/// </summary>
+public class SeedDataService
+{
+    private readonly ProjectRepository _projectRepository;
+    private readonly TaskRepository _taskRepository;
+    private readonly TagRepository _tagRepository;
+    private readonly CategoryRepository _categoryRepository;
+    private readonly string _seedDataFilePath = "SeedData.json";
+    private readonly ILogger<SeedDataService> _logger;
+
+    public SeedDataService(
+        ProjectRepository projectRepository,
+        TaskRepository taskRepository,
+        TagRepository tagRepository,
+        CategoryRepository categoryRepository,
+        ILogger<SeedDataService> logger)
+    {
+        _projectRepository = projectRepository;
+        _taskRepository = taskRepository;
+        _tagRepository = tagRepository;
+        _categoryRepository = categoryRepository;
+        _logger = logger;
+    }
+
+    public async Task LoadSeedDataAsync()
+    {
+        ClearTables();
+
+        await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_seedDataFilePath);
+
+        ProjectsJson? payload = null;
+        try
         {
-            _projectRepository = projectRepository;
-            _taskRepository = taskRepository;
-            _tagRepository = tagRepository;
-            _categoryRepository = categoryRepository;
-            _logger = logger;
+            payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ProjectsJson);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Ошибка десериализации начальных данных");
         }
 
-        public async Task LoadSeedDataAsync()
+        try
         {
-            ClearTables();
-
-            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_seedDataFilePath);
-
-            ProjectsJson? payload = null;
-            try
+            if (payload is not null)
             {
-                payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ProjectsJson);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e, "Ошибка десериализации начальных данных");
-            }
-
-            try
-            {
-                if (payload is not null)
+                foreach (var project in payload.Projects)
                 {
-                    foreach (var project in payload.Projects)
+                    if (project is null)
                     {
-                        if (project is null)
+                        continue;
+                    }
+
+                    if (project.Category is not null)
+                    {
+                        await _categoryRepository.SaveItemAsync(project.Category);
+                        project.CategoryID = project.Category.ID;
+                    }
+
+                    await _projectRepository.SaveItemAsync(project);
+
+                    if (project?.Tasks is not null)
+                    {
+                        foreach (var task in project.Tasks)
                         {
-                            continue;
+                            task.ProjectID = project.ID;
+                            await _taskRepository.SaveItemAsync(task);
                         }
+                    }
 
-                        if (project.Category is not null)
+                    if (project?.Tags is not null)
+                    {
+                        foreach (var tag in project.Tags)
                         {
-                            await _categoryRepository.SaveItemAsync(project.Category);
-                            project.CategoryID = project.Category.ID;
-                        }
-
-                        await _projectRepository.SaveItemAsync(project);
-
-                        if (project?.Tasks is not null)
-                        {
-                            foreach (var task in project.Tasks)
-                            {
-                                task.ProjectID = project.ID;
-                                await _taskRepository.SaveItemAsync(task);
-                            }
-                        }
-
-                        if (project?.Tags is not null)
-                        {
-                            foreach (var tag in project.Tags)
-                            {
-                                await _tagRepository.SaveItemAsync(tag, project.ID);
-                            }
+                            await _tagRepository.SaveItemAsync(tag, project.ID);
                         }
                     }
                 }
             }
-            catch (Exception e)
-            {
-                _logger.LogError(e, "Ошибка при сохранении начальных данных");
-                throw;
-            }
         }
-
-        private async void ClearTables()
+        catch (Exception e)
         {
-            try
-            {
-                await Task.WhenAll(
-                    _projectRepository.DropTableAsync(),
-                    _taskRepository.DropTableAsync(),
-                    _tagRepository.DropTableAsync(),
-                    _categoryRepository.DropTableAsync());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            _logger.LogError(e, "Ошибка при сохранении начальных данных");
+            throw;
+        }
+    }
+
+    private async void ClearTables()
+    {
+        try
+        {
+            await Task.WhenAll(
+                _projectRepository.DropTableAsync(),
+                _taskRepository.DropTableAsync(),
+                _tagRepository.DropTableAsync(),
+                _categoryRepository.DropTableAsync());
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
         }
     }
 }

@@ -1,21 +1,20 @@
 using System.Diagnostics.CodeAnalysis;
 using MauiXaml.Models;
 
-namespace MauiXaml.Utilities
+namespace MauiXaml.Utilities;
+
+/// <summary>
+/// Расширения модели проекта
+/// </summary>
+public static class ProjectExtentions
 {
     /// <summary>
-    /// Расширения модели проекта
+    /// Проверяет является ли проект нулевым или новым
     /// </summary>
-    public static class ProjectExtentions
+    /// <param name="project">Проект</param>
+    /// <returns>Возвращает true, если проект null или идентификатор равен 0</returns>
+    public static bool IsNullOrNew([NotNullWhen(false)] this Project? project)
     {
-        /// <summary>
-        /// Проверяет является ли проект нулевым или новым
-        /// </summary>
-        /// <param name="project">Проект</param>
-        /// <returns>Возвращает true, если проект null или идентификатор равен 0</returns>
-        public static bool IsNullOrNew([NotNullWhen(false)] this Project? project)
-        {
-            return project is null || project.ID == 0;
-        }
+        return project is null || project.ID == 0;
     }
 }

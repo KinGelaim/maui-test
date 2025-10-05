@@ -1,10 +1,9 @@
-namespace MauiXaml.Pages.Controls
+namespace MauiXaml.Pages.Controls;
+
+public partial class ProjectCardView
 {
-    public partial class ProjectCardView
+    public ProjectCardView()
     {
-        public ProjectCardView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

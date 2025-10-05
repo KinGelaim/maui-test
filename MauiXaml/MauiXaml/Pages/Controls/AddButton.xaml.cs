@@ -1,10 +1,9 @@
-namespace MauiXaml.Pages.Controls
+namespace MauiXaml.Pages.Controls;
+
+public partial class AddButton
 {
-    public partial class AddButton
+    public AddButton()
     {
-        public AddButton()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
