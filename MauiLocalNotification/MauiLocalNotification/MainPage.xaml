@@ -33,24 +33,23 @@
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
 
-            <Label
-                Text="Нажмите на кнопку ниже, чтобы создать МГНОВЕННОЕ локальное уведомление"
-                HorizontalOptions="Center"
-                VerticalOptions="Start" />
             <Button
                 Text="Создать МГНОВЕННОЕ уведомление"
                 HorizontalOptions="Center"
                 VerticalOptions="Start"
-                Clicked="OnSendClick" />
-            <Label
-                Text="Нажмите на кнопку ниже, чтобы запланировать локальное уведомление на 10-секундный срок"
-                HorizontalOptions="Center"
-                VerticalOptions="Start" />
+                Clicked="OnInstalSendClick" />
+
             <Button
-                Text="Создать ЗАПЛАНИРОВАННОЕ уведомление"
+                Text="Создать уведомление через 10 секунд"
                 HorizontalOptions="Center"
                 VerticalOptions="Start"
-                Clicked="OnScheduleClick" />
+                Clicked="OnSendInTenSecondsButtonClick" />
+
+            <Button
+                Text="Создать уведомление через 5 минут"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                Clicked="OnSendInFiveMinutesButtonClick" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

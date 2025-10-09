@@ -81,7 +81,7 @@ internal sealed class NotificationManagerService : INotificationManagerService
 
     public void Show(string title, string message)
     {
-        Intent intent = new Intent(Platform.AppContext, typeof(MainActivity));
+        var intent = new Intent(Platform.AppContext, typeof(MainActivity));
         intent.PutExtra(TitleKey, title);
         intent.PutExtra(MessageKey, message);
         intent.SetFlags(ActivityFlags.SingleTop | ActivityFlags.ClearTop);
@@ -114,7 +114,7 @@ internal sealed class NotificationManagerService : INotificationManagerService
             };
 
             // Регистрация канала
-            NotificationManager manager = (NotificationManager)Platform.AppContext.GetSystemService(Context.NotificationService);
+            var manager = (NotificationManager)Platform.AppContext.GetSystemService(Context.NotificationService);
             manager.CreateNotificationChannel(channel);
             channelInitialized = true;
         }
@@ -122,9 +122,9 @@ internal sealed class NotificationManagerService : INotificationManagerService
 
     private long GetNotifyTime(DateTime notifyTime)
     {
-        DateTime utcTime = TimeZoneInfo.ConvertTimeToUtc(notifyTime);
-        double epochDiff = (new DateTime(1970, 1, 1) - DateTime.MinValue).TotalSeconds;
-        long utcAlarmTime = utcTime.AddSeconds(-epochDiff).Ticks / 10000;
+        var utcTime = TimeZoneInfo.ConvertTimeToUtc(notifyTime);
+        var epochDiff = (new DateTime(1970, 1, 1) - DateTime.MinValue).TotalSeconds;
+        var utcAlarmTime = utcTime.AddSeconds(-epochDiff).Ticks / 10000;
         return utcAlarmTime; // миллисекунды
     }
 }

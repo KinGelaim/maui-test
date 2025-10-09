@@ -15,7 +15,7 @@ internal sealed class NotificationPermission : BasePlatformPermission
                 result.Add((Manifest.Permission.PostNotifications, true));
             }
 
-            return result.ToArray();
+            return [.. result];
         }
     }
 }

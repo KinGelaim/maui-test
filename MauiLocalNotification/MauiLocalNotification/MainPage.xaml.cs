@@ -11,7 +11,7 @@ public partial class MainPage : ContentPage
 {
     private int count = 0;
 
-    private INotificationManagerService notificationManager;
+    private readonly INotificationManagerService notificationManager;
     private int notificationNumber = 0;
 
     public MainPage(INotificationManagerService manager)
@@ -31,11 +31,11 @@ public partial class MainPage : ContentPage
     {
         base.OnAppearing();
 
-        PermissionStatus status = await Permissions.RequestAsync<NotificationPermission>();
+        var status = await Permissions.RequestAsync<NotificationPermission>();
     }
 #endif
 
-    void OnSendClick(object sender, EventArgs e)
+    void OnInstalSendClick(object sender, EventArgs e)
     {
         notificationNumber++;
         string title = $"Локальное уведомление №{notificationNumber}";
@@ -43,12 +43,20 @@ public partial class MainPage : ContentPage
         notificationManager.SendNotification(title, message);
     }
 
-    void OnScheduleClick(object sender, EventArgs e)
+    void OnSendInTenSecondsButtonClick(object sender, EventArgs e)
     {
         notificationNumber++;
         string title = $"Локальное уведомление №{notificationNumber}";
         string message = $"Вы получили {notificationNumber} уведомлений!";
         notificationManager.SendNotification(title, message, DateTime.Now.AddSeconds(10));
+    }
+
+    void OnSendInFiveMinutesButtonClick(object sender, EventArgs e)
+    {
+        notificationNumber++;
+        string title = $"Локальное уведомление №{notificationNumber}";
+        string message = $"Вы получили {notificationNumber} уведомлений!";
+        notificationManager.SendNotification(title, message, DateTime.Now.AddMinutes(5));
     }
 
     void ShowNotification(string title, string message)
