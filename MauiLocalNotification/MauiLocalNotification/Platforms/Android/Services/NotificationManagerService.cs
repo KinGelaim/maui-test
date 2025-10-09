@@ -90,15 +90,16 @@ internal sealed class NotificationManagerService : INotificationManagerService
             ? PendingIntentFlags.UpdateCurrent | PendingIntentFlags.Immutable
             : PendingIntentFlags.UpdateCurrent;
 
-        PendingIntent pendingIntent = PendingIntent.GetActivity(Platform.AppContext, pendingIntentId++, intent, pendingIntentFlags);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(Platform.AppContext, channelId)
+        var pendingIntent = PendingIntent.GetActivity(Platform.AppContext, pendingIntentId++, intent, pendingIntentFlags);
+        var builder = new NotificationCompat.Builder(Platform.AppContext, channelId)
             .SetContentIntent(pendingIntent)
             .SetContentTitle(title)
             .SetContentText(message)
             .SetLargeIcon(BitmapFactory.DecodeResource(Platform.AppContext.Resources, Resource.Drawable.dotnet_logo))
-            .SetSmallIcon(Resource.Drawable.message_small);
+            .SetSmallIcon(Resource.Drawable.message_small)
+            .SetAutoCancel(true);
 
-        Notification notification = builder.Build();
+        var notification = builder.Build();
         compatManager.Notify(messageId++, notification);
     }
 
